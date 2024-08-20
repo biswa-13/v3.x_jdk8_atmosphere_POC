@@ -2,26 +2,67 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Atmosphere WebSocket Chat</title>
-    <script type="text/javascript" src="javascript/jquery-2.0.3.js"></script>
+    <title>Atmosphere Chat</title>
     <script type="text/javascript" src="javascript/atmosphere.js"></script>
+    <script type="text/javascript" src="javascript/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="javascript/application.js"></script>
-    <style>
-    * {font-family: tahoma; font-size: 12px; padding: 0px; margin: 0px;}
-    p {line-height: 18px;}
-    div {width: 500px; margin-left: auto; margin-right: auto;}
-    #content {padding: 5px; background: #ddd; border-radius: 5px; border: 1px solid #CCC; margin-top: 10px;}
-    #header {padding: 5px; background: #f5deb3; border-radius: 5px; border: 1px solid #CCC; margin-top: 10px;}
-    #input {border-radius: 2px; border: 1px solid #ccc; margin-top: 10px; padding: 5px; width: 400px;}
-    #status {width: 88px; display: block; float: left; margin-top: 15px;}
-    </style>
+	<style>
+		.container {
+			display: flex;
+			background-color: #55BA5D
+		}
+		.namespace1, .namespace2 {
+			width: 50%;
+		}
+
+	</style>
 </head>
 <body>
-    <div id="header"><h3>Atmosphere WebSocket ONLY Chat</h3></div>
-    <div id="content"></div>
-    <div>
-        <span id="status">Connecting...</span>
-        <input type="text" id="input" disabled="disabled"/>
-    </div>
+	<h2 style="color: #FFC300; text-align:center">Atmosphere Demo in Socket IO Style</h2>
+	<hr>
+	<div class="container" >
+		<div class="namespace1" style="background-color:#f3f9f7;border: 2px solid Blue; padding: 3%;">
+			<div style="background-color:gray;  width: 260;align-content: center;padding: 20px;">
+				<h3> <b>System Info: Namespace: Blue, Room: BlueBoyz</b></h3>
+				<span id="sysInfoDiv">
+			</span>
+				<hr/>
+				<span><button id="connectBtn" onClick="connect()" style="background-color:green">Connect</button></span>
+				<span><input type="text" id="msgBox" /></span>
+				<span><button id="msgBtn" onClick = "sendMessage()" style="background-color:orange">Push Message</button></span>
+				<span><button id="cstmEvntBtn" onClick = "triggerCustomEvent()" style="background-color:cyan">Trigger Custom Event</button></span>
+				<span><button id="closeBtn" onClick = "close()" style="background-color:purple">Close</button></span>
+				<span><button id="disConnectBtn" onClick = "disconnect()" style="background-color:red">Disconnect</button></span>
+
+			</div>
+			<div style="width: 300; margin-top:20px;">
+
+				<div style="border: 1px solid blue; width: 300; min-height:200px; margin-top:20px;" id="chatBox">
+				</div>
+			</div>
+		</div>
+
+		<!-- Second Namespace Panel-->
+		<div class="namespace2" style="background-color:#f8ebeb;border: 2px solid red; padding: 3%;">
+			<div style="background-color:gray;  width: 260;align-content: center;padding: 20px;">
+				<h3> <b>System Info: Namespace: Red, Room: RedChillyz</b></h3>
+				<span id="sysInfoDiv1">
+			</span>
+				<hr/>
+				<span><button id="connectBtn1" onClick="connect1()" style="background-color:green">Connect</button></span>
+				<span><input type="text" id="msgBox1" /></span>
+				<span><button id="msgBtn1" onClick = "sendMessage1()" style="background-color:orange">Push Message</button></span>
+				<span><button id="cstmEvntBtn1" onClick = "triggerCustomEvent1()" style="background-color:cyan">Trigger Custom Event</button></span>
+				<span><button id="closeBtn1" onClick = "close1()" style="background-color:purple">Close</button></span>
+				<span><button id="disConnectBtn1" onClick = "disconnect1()" style="background-color:red">Disconnect</button></span>
+			</div>
+			<div style="width: 300; margin-top:20px;">
+				<div style="border: 1px solid blue; width: 300; min-height:200px; margin-top:20px;" id="chatBox1">
+				</div>
+			</div>
+		</div>
+
+	</div>
+
 </body>
 </html>

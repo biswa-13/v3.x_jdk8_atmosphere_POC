@@ -1,89 +1,126 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <groupId>org.sockatmo</groupId>
-  <artifactId>v3.x_jdk8_atmos_POC</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
-
-  <name>v3.x_jdk8_atmos_POC</name>
+  <groupId>com.org</groupId>
+  <artifactId>saravato_atmos</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>saravato_atmos Maven Webapp</name>
   <url>http://maven.apache.org</url>
+    <dependencies>
+        <!-- Jetty Server Core -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>9.4.53.v20231009</version>
+        </dependency>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+        <!-- Jetty Servlet Handling -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>9.4.53.v20231009</version>
+        </dependency>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+        <!-- Jetty WebSocket Server (JSR 356 support) -->
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-server</artifactId>
+            <version>9.4.53.v20231009</version>
+        </dependency>
 
-    <dependency>
-      <groupId>org.atmosphere</groupId>
-      <artifactId>atmosphere-runtime</artifactId>
-      <version>3.6.9</version>
-    </dependency>
+        <!-- Jetty WebSocket Servlet -->
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-servlet</artifactId>
+            <version>9.4.53.v20231009</version>
+        </dependency>
 
-    <!-- Core Jetty Server -->
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-server</artifactId>
-      <version>9.4.55.v20240627</version>
-    </dependency>
+        <!-- WebSocket API (JSR 356) -->
+        <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>
+            <version>1.1</version>
+        </dependency>
 
-    <!-- Jetty WebSocket API -->
-    <dependency>
-      <groupId>org.eclipse.jetty.websocket</groupId>
-      <artifactId>websocket-api</artifactId>
-      <version>9.4.55.v20240627</version>
-    </dependency>
+        <!-- Atmosphere Runtime 3.x -->
+        <dependency>
+            <groupId>org.atmosphere</groupId>
+            <artifactId>atmosphere-runtime</artifactId>
+            <version>3.6.9</version> <!-- Use the latest stable version of 3.x -->
+        </dependency>
 
-    <!-- Jetty WebSocket Servlet Integration -->
-    <dependency>
-      <groupId>org.eclipse.jetty.websocket</groupId>
-      <artifactId>websocket-servlet</artifactId>
-      <version>9.4.55.v20240627</version>
-    </dependency>
+        <!-- Jetty Utilities (Optional, if needed for utility functions) -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-util</artifactId>
+            <version>9.4.53.v20231009</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlets -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlets</artifactId>
+            <version>9.4.53.v20231009</version>
+        </dependency>
+
+        <!-- Jetty Annotations (Optional, if using annotations like @WebSocket) -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-annotations</artifactId>
+            <version>9.4.53.v20231009</version>
+        </dependency>
+
+        <!-- Servlet API (Optional, if you need servlet support in general) -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-api</artifactId>-->
+<!--            <version>2.0.16</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.0</version> <!-- or the latest version -->
+        </dependency>
 
 
-<!--    <dependency>-->
-<!--      <groupId>org.eclipse.jetty</groupId>-->
-<!--      <artifactId>jetty-servlet</artifactId>-->
-<!--      <version>9.4.28.v20200408</version>-->
-<!--    </dependency>-->
-    <!-- Jetty Servlet Support -->
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-servlet</artifactId>
-      <version>9.4.55.v20240627</version>
-    </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.16.1</version>
+        </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.eclipse.jetty</groupId>-->
-<!--      <artifactId>jetty-util</artifactId>-->
-<!--      <version>9.4.28.v20200408</version>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.eclipse.jetty.websocket</groupId>-->
-<!--      <artifactId>websocket-server</artifactId>-->
-<!--      <version>9.4.28.v20200408</version>-->
-<!--    </dependency>-->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
 
-
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-jdk14</artifactId>
-      <version>2.0.0</version> <!-- Use the latest version -->
-    </dependency>
-
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>2.8.11</version>
-    </dependency>
-  </dependencies>
+    </dependencies>
+    <build>
+    <finalName>saravato_atmos</finalName>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+<!--              <configuration>-->
+<!--                  <source>11</source>-->
+<!--                  <target>11</target>-->
+<!--              </configuration>-->
+              <configuration>
+                  <source>8</source>
+                  <target>8</target>
+              </configuration>
+          </plugin>
+      </plugins>
+  </build>
 </project>

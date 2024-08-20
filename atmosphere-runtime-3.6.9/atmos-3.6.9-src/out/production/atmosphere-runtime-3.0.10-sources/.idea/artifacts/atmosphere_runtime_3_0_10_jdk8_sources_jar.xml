@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="atmosphere-runtime-3.0.10_jdk8-sources:jar">
+    <output-path>D:/JAR Files</output-path>
+    <root id="archive" name="atmosphere-runtime-3.0.10-sources.jar">
+      <element id="module-output" name="atmosphere-runtime-3.0.10-sources" />
+    </root>
+  </artifact>
+</component>
